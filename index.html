@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Telegram Mini App</title>
+    <title>Hking Mini App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- MONETAG SDK -->
+    <script src="//libtl.com/sdk.js" data-zone="10604214" data-sdk="show_10604214"></script>
 </head>
-<body style="text-align:center; font-family:Arial;">
+<body style="text-align:center; font-family:Arial; margin-top:50px;">
 
-    <h1>Welcome 🎉</h1>
-    <p>Click button below to continue</p>
+    <h1>Welcome to Hking Mini App 🎉</h1>
+    <p>Click the button below to watch an ad!</p>
 
-    <button onclick="watchAd()" style="padding:10px 20px; font-size:18px;">
-    Watch Ad
-</button>
+    <!-- WATCH AD BUTTON -->
+    <button onclick="watchAd()" style="padding:15px 25px; font-size:18px; cursor:pointer;">
+        Watch Ad
+    </button>
 
-<script>
-function watchAd() {
-    show_10604214('pop').then(() => {
-        alert("Thanks for watching the ad!");
-    }).catch(e => {
-        alert("Ad failed to load. Try again.");
-    });
-}
-</script>
+    <!-- SCRIPT TO TRIGGER MONETAG AD -->
+    <script>
+        function watchAd() {
+            if (typeof show_10604214 === "function") {
+                show_10604214('pop').then(() => {
+                    alert("Thanks for watching the ad!");
+                }).catch(e => {
+                    alert("Ad failed to load. Try again.");
+                });
+            } else {
+                alert("Ad script is not loaded yet. Refresh and try again.");
+            }
+        }
+    </script>
+
+</body>
+</html>
